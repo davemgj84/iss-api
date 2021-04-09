@@ -22,7 +22,7 @@ const getIssTimes = async (lat, long) => {
   return query;
 };
 
-App.get("/api/:long&:lat", async (req, res) => {
+App.get("/api/:lat&:long", async (req, res) => {
   const lat = req.params.lat;
   const long = req.params.long;
   const query = await getIssTimes(lat, long).then((response) => response);
