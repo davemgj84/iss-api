@@ -8,7 +8,7 @@ require("dotenv").config();
 const cors = require("cors");
 App.use(cors());
 
-const getIssTimes = async (long, lat) => {
+const getIssTimes = async (lat, long) => {
   const url = `http://api.open-notify.org/iss-pass.json?lat=${lat}&lon=${long}`;
   const query = await axios
     .get(url)
@@ -23,9 +23,9 @@ const getIssTimes = async (long, lat) => {
 };
 
 App.get("/api/:long&:lat", async (req, res) => {
-  const long = req.params.long;
   const lat = req.params.lat;
-  const query = await getIssTimes(long, lat).then((response) => response);
+  const long = req.params.long;
+  const query = await getIssTimes(lat, long).then((response) => response);
   res.json(query);
 });
 
