@@ -22,7 +22,6 @@ const getIssTimes = async (long, lat) => {
   return query;
 };
 
-// pass in the location query with our api to the getWeather function - return json
 App.get("/api/:long&:lat", async (req, res) => {
   const long = req.params.long;
   const lat = req.params.lat;
