@@ -18,6 +18,7 @@ const getIssTimes = async (lat, long) => {
     })
     .catch((err) => {
       console.log("Could not find the ISS", err);
+      return err;
     });
   return query;
 };
