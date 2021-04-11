@@ -1,35 +1,36 @@
-const Express = require("express");
-const App = Express();
-const PORT = process.env.PORT || 8080;
+const express = require("express");
+const app = express();
+
+const cors = require("cors");
+app.use(cors());
+
 const axios = require("axios");
 
 require("dotenv").config();
 
-const cors = require("cors");
-App.use(cors());
+const PORT = process.env.PORT || 8080;
 
-const getIssTimes = async (lat, long) => {
+const getIssTimes = (lat, long) => {
   const url = `http://api.open-notify.org/iss-pass.json?lat=${lat}&lon=${long}`;
-  const query = await axios
+  const response = axios
     .get(url)
     .then((response) => {
       const data = response.data.response;
       return data;
     })
     .catch((err) => {
-      console.log("Could not find the ISS", err);
+      console.log("Sorry, could not find the ISS", err.message);
       return err;
     });
-  return query;
+  return response;
 };
 
-App.get("/api/:lat&:long", async (req, res) => {
-  const lat = req.params.lat;
-  const long = req.params.long;
-  const query = await getIssTimes(lat, long).then((response) => response);
-  res.json(query);
+app.get("/api/passtimes", (req, res) => {
+  const lat = req.query.lat;
+  const long = req.query.long;
+  getIssTimes(lat, long).then((response) => res.json(response));
 });
 
-App.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}!`);
 });
