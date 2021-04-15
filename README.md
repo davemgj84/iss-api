@@ -18,16 +18,6 @@
 
   - https://iss-spotter.netlify.app/
 
-## Instructions to run locally
-
-- Fork this repository. Cd into the project folder, and run `npm install`.
-
-- Create a `.env` file and add `PORT=8080` to the file. Just like the `.env.example` file.
-
-- Once dependencies have been installed, and you may simply run `npm start` to start the server locally via `Port 8080`.
-
-- Once the server is running, you can then use the Front End App to find out when you can see the Internation Space Station pass over head!
-
 ## Dependencies Include:
 
 - Node - ^10.16.1
