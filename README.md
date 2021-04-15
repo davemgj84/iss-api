@@ -10,11 +10,13 @@
 
 - Acts as a proxy or middleman for making API requests to the Open-Notify API, to fetch data for the next available times to see the Internation Space Station pass overhead.
 
+- This API has been deployed via Heroku
+
 ## Location of deployed application
 
 - The Front End application is deployed via Netlify and can be visited here:
 
-  - to be determined - not yet deployed
+  - https://iss-spotter.netlify.app/
 
 ## Instructions to run locally
 
